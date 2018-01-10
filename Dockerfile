@@ -3,12 +3,14 @@ FROM docker
 ENV GLIBC 2.23-r3
 
 # Install dependencies
+# Based: https://github.com/docker/compose/issues/3465
 RUN set -xe && \
     apk update && apk add --no-cache \
       bash \
       git \
       curl \
       openssl \
+      openssh \
       ca-certificates \
       && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub && \
